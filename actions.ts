@@ -6,6 +6,7 @@ function newComment(input: string) {
   return {
     type: NEW_COMMENT,
     payload: input,
+    rateValue: 0,
     id: uuid.v4()
   };
 }
@@ -33,9 +34,9 @@ function rate(id: string, rateValue: 1 | 0) {
   };
 }
 
-const boundNewComment = (text: string) => dispatch(newComment(text));
+const boundNewComment = (text: string) => store.dispatch(newComment(text));
 const boundEditComment = (text: string, id: string) =>
-  dispatch(editComment(text, id));
-const boundDelteComment = (id: string) => dispatch(deleteComment(id));
-const boundRateComment = (id: string, rateValue: number) =>
-  dispatch(rate(id, rateValue));
+  store.dispatch(editComment(text, id));
+const boundDelteComment = (id: string) => store.dispatch(deleteComment(id));
+const boundRateComment = (id: string, rateValue: 0 | 1) =>
+  store.dispatch(rate(id, rateValue));
