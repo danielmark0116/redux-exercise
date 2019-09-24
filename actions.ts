@@ -32,3 +32,10 @@ function rate(id: string, rateValue: 1 | 0) {
     id: id
   };
 }
+
+const boundNewComment = (text: string) => dispatch(newComment(text));
+const boundEditComment = (text: string, id: string) =>
+  dispatch(editComment(text, id));
+const boundDelteComment = (id: string) => dispatch(deleteComment(id));
+const boundRateComment = (id: string, rateValue: number) =>
+  dispatch(rate(id, rateValue));
